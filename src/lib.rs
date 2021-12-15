@@ -69,6 +69,9 @@
 //! build` or similar. Note: This flag is _not tested anywhere_, including in the regular test of
 //! the powerset of all feature flags. Use at your own risk. Without this flag, any method that
 //! requires the local offset will return the `Err` variant.
+//#![no_std]
+#![no_std]
+
 
 #![doc(html_playground_url = "https://play.rust-lang.org")]
 #![cfg_attr(__time_03_docs, feature(doc_cfg, doc_auto_cfg, doc_notable_trait))]
@@ -280,6 +283,8 @@ pub mod format_description;
 #[cfg(feature = "formatting")]
 pub mod formatting;
 #[cfg(feature = "std")]
+#[macro_use]
+extern crate sgx_tstd as std;
 mod instant;
 #[cfg(feature = "macros")]
 pub mod macros;

@@ -3,6 +3,9 @@
 use core::ops::Deref;
 use std::io;
 
+#[cfg(feature = "std")]
+use std::{string::String, vec::Vec};
+
 use crate::format_description::well_known::{Rfc2822, Rfc3339};
 use crate::format_description::FormatItem;
 use crate::formatting::{

@@ -5,6 +5,7 @@ use core::ops::{Add, Sub};
 use core::time::Duration as StdDuration;
 #[cfg(feature = "formatting")]
 use std::io;
+use std::{string::String};
 
 #[cfg(feature = "formatting")]
 use crate::formatting::Formattable;

@@ -7,6 +7,7 @@ use core::fmt;
 use core::hash::{Hash, Hasher};
 use core::ops::{Add, Sub};
 use core::time::Duration as StdDuration;
+use std::{string::String};
 #[cfg(feature = "formatting")]
 use std::io;
 #[cfg(feature = "std")]

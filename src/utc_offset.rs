@@ -4,6 +4,7 @@ use core::fmt;
 use core::ops::Neg;
 #[cfg(feature = "formatting")]
 use std::io;
+use std::{string::String};
 
 use crate::error;
 #[cfg(feature = "formatting")]
