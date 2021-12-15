@@ -121,6 +121,11 @@
 #[cfg(feature = "alloc")]
 extern crate alloc;
 
+// ensure we don't import any parts of the std library - we use sgx_tstd instead
+//#![no_std]
+#[macro_use]
+extern crate sgx_tstd as std;
+
 // region: macros
 /// Helper macro for easily implementing `OpAssign`.
 macro_rules! __impl_assign {
