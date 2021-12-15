@@ -25,9 +25,9 @@ targets = ["x86_64-unknown-linux-gnu"]
 rustdoc-args = ["--cfg", "__time_03_docs"]
 
 [features]
-default = []
+default = ["std"]
 alloc = []
-formatting = ["itoa"]
+formatting = ["itoa", "std"]
 large-dates = ["time-macros/large-dates"] # use case for weak feature dependencies (rust-lang/cargo#8832)
 local-offset = ["std"]
 macros = ["time-macros"]
@@ -37,14 +37,13 @@ serde-human-readable = ["serde", "formatting", "parsing"]
 std = ["alloc"]
 
 [dependencies]
-itoa = { version = "0.4.7", optional = true }
-quickcheck-dep = { package = "quickcheck", version = "1.0.3", default-features = false, optional = true }
-rand = { version = "0.8.4", optional = true, default-features = false }
-serde = { version = "1.0.126", optional = true, default-features = false }
+itoa = { git = "https://github.com/mesalock-linux/itoa-sgx", tag = "sgx_1.1.3", optional = true }
+quickcheck-dep = { package = "quickcheck", git = "https://github.com/mesalock-linux/quickcheck-sgx", tag = "sgx_1.1.3", default-features = false, optional = true }
+rand = { git = "https://github.com/mesalock-linux/rand-sgx", tag = "sgx_1.1.3", optional = true, default-features = false }
+serde = {git = "https://github.com/mesalock-linux/serde-sgx", tag = "sgx_1.1.3", optional = true, default-features = false }
 time-macros = { version = "=0.2.3", path = "time-macros", optional = true }
 #porting for sgx
 sgx_tstd = { rev = "v1.1.3", git = "https://github.com/apache/teaclave-sgx-sdk.git" }
-sgx_alloc = { version = "1.1.4", git = "https://github.com/haerdib/incubator-teaclave-sgx-sdk", branch = "master"}
 
 [target.'cfg(any(target_os = "linux", target_os = "freebsd", unsound_local_offset))'.dependencies]
 libc = "0.2.98"
@@ -53,8 +52,8 @@ libc = "0.2.98"
 num_threads = "0.1.0"
 
 [dev-dependencies]
-rand = { version = "0.8.4", default-features = false }
-serde = { version = "1.0.126", default-features = false }
+rand = { git = "https://github.com/mesalock-linux/rand-sgx", tag = "sgx_1.1.3", default-features = false }
+serde = { git = "https://github.com/mesalock-linux/serde-sgx", tag = "sgx_1.1.3", default-features = false }
 serde_test = "1.0.126"
 
 [target.'cfg(__ui_tests)'.dev-dependencies]
