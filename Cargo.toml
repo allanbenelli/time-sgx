@@ -27,7 +27,7 @@ rustdoc-args = ["--cfg", "__time_03_docs"]
 [features]
 default = []
 alloc = []
-formatting = ["itoa", "std"]
+formatting = ["itoa"]
 large-dates = ["time-macros/large-dates"] # use case for weak feature dependencies (rust-lang/cargo#8832)
 local-offset = ["std"]
 macros = ["time-macros"]
